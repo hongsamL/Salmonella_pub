@@ -1,3 +1,6 @@
+# Sequeance Cleaner script by Genivaldo Gueiros
+# Retrieved from http://biopython.org/wiki/Sequence_Cleaner
+
 import sys
 from Bio import SeqIO
 
