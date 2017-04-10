@@ -1,3 +1,6 @@
+# filter_snps -r [regions file] -f [VCF file] -o [output file]
+# masks bases in a VCF file with locations specified in the regions file
+
 import argparse
 import pandas as pd
 import os
