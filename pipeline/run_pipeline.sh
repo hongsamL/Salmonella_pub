@@ -146,22 +146,19 @@ snpFilter() {
 		mv snps/$sampleName.snps.filtered.vcf filtered_snps
 	done
 }
-# --------------Consensus and SNP matrix--------------------
+# --------------Consensus--------------------
 consensus() {
 	mkdir consensus
 	ls filtered_snps | while read f; do
-		python makeconsensus.py -r ref/ref.fasta -f filtered_snps/$f -o consensus ;
+		echo "python makeconsensus.py -r ref/ref.fasta -f filtered_snps/$f -o consensus" >> write_consensus ;
 	done
-	mkdir snpmatrix
-	cat consensus/* > consensus/aligned.fasta
-	snp-sites -m -o snps.fasta consensus/aligned.fasta
-	mv snps.fasta snpmatrix
+	cat write_consensus | parallel -j NUM_THREADS
 }
 
 #----------------Pairwise SNPs--------------------------
-snpCounts() {
-	python pairwise_snps.py -f $INPUT_LOC/snpmatrix/snps.fasta
-}
+#snpCounts() {
+#	python pairwise_snps.py -f $INPUT_LOC/snpmatrix/snps.fasta
+#}
 
 #--------------MAIN -------------------------------------
 main() {
@@ -178,8 +175,8 @@ main() {
 	snpFilter
 	echo "creating consesnsus sequences \n"
 	consensus
-	echo "calculating SNP differences"
-	snpCounts
+#	echo "calculating SNP differences"
+#	snpCounts
 }
 
 main
