@@ -1,6 +1,7 @@
-# extract_BLAST_alignment.py
+# extract_fasta.py
+# extracts a fasta alignment for a query sequence and its hits in a BLAST database
 # TO RUN EXECUTE
-# python extract_BLAST_alignment.py [input_fasta] [DB]
+# python extract_fasta.py [input_fasta] [DB]
 
 from Bio.Blast.Applications import NcbiblastxCommandline
 from Bio.Blast import NCBIXML
