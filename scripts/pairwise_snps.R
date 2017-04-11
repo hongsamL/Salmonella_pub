@@ -3,8 +3,6 @@
 library(seqinr)
 library(Biostrings)
 library(stringr)
-library(ape)
-library(reshape2)
 
 #--------------Pairwise SNPS CODE (without counting N)---------------------
 
